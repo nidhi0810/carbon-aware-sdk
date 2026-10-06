@@ -48,5 +48,11 @@
   <ItemGroup>
     <Folder Include="api\v1" />
   </ItemGroup>
-
+<Target Name="CopyLocationData" AfterTargets="Build">
+    <MakeDir Directories="$(TargetDir)\location-sources\json" />
+    <Copy
+        SourceFiles="$(ProjectDir)..\..\data\location-sources\azure-regions.json"
+        DestinationFiles="$(TargetDir)\location-sources\json\azure-regions.json"
+        SkipUnchangedFiles="true" />
+</Target>
 </Project>
